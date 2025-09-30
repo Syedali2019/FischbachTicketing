@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link href="~/Contents/fonts/font.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Contents/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/Contents/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/Contents/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/Contents/dist/css/style.css">
+    <link runat="server" rel="shortcut icon" href="~/Contents/dist/img/favicon.ico" type="image/x-icon" />
+</head>
+<body class="hold-transition login-page" style="min-height: 482px;background-image: url('../../Contents/dist/img/services-productioncontrol-header-2732x1536.jpg');background-repeat: no-repeat;background-position: center;background-size: cover;background-color: #cccccc;/* background-blend-mode: luminosity; */">
+    @RenderBody()
+    <footer class="footer">
+        <p class="footerp">&copy; @DateTime.Now.Year – Arisoft</p>
+    </footer>
+    <script src="~/Contents/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Contents/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Contents/dist/js/adminlte.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

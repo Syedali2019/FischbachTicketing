@@ -1,0 +1,156 @@
+﻿@{
+    ViewBag.Title = "Ticketing Screen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="content">
+    <div id="infoMessage" class="alert font" style="display: none;">
+        <button type="button" class="close" id="btnAlertClose">&times;</button>
+        <p></p>
+    </div>
+    <div class="card card-danger">
+        <div class="card-header">
+            <h3 class="card-title">Order</h3>
+        </div>
+        <div class="toast align-items-center bg-success" style="position:absolute !important;" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="30000">
+            <div class="d-flex">
+                <div id="toastContent" class="toast-body" style="color:#ffffff !important">
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Order Template:</label>
+                        <select id="cmbOrderTemplate" class="form-control">
+                            <option value="" selected>---Select Order Template---</option>
+                            <option value="OI">Order Ink</option>
+                            <option value="OS">Order Screen</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="divOrder" style="display:none;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Name:</label>
+                                <input type="text" id="txtEmployeeName" name="txtEmployeeName" value="" class="form-control" disabled="disabled" />
+                                <input type="hidden" id="hdnEmployeeID" name="hdnEmployeeID" value="@ViewBag.EmployeeID" />
+                                <input type="hidden" id="hdnTicketID" name="hdnTicketID" value="0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>WO: <span style="color:red">*</span></label>
+                                <input type="text" id="txtWorkOrder" name="txtWorkOrder" value="" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Item #:</label>
+                                <input type="text" id="txtItemNo" name="txtItemNo" value="" class="form-control" disabled="disabled" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Print Line:</label>
+                                <input type="text" id="txtPrintLine" name="txtPrintLine" value="" class="form-control" disabled="disabled" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Severity:</label><br />
+                                <input type="checkbox" id="chkUrgent" name="chkUrgent">&nbsp;&nbsp;&nbsp;Urgent</input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" style="float: right;">
+                            <button id="btnAddItem" type="button" class="btn btn-primary" style="display:none;">Add Item</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" id="divItemList">
+                            <table id="gridItems"></table>
+                            <div id="pagerItems"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Comments:</label>
+                            <textarea id="txtComments" name="txtComments" value="" class="form-control" cols="5" rows="5" maxlength="1200"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="controlPanel" class="form-group" style="display:none;float:right;">
+                    <div class="form-group">
+                        <button id="btnSubmit" type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="spinner" style="display:none">
+            <div class="center-div">
+                <div class="inner-div">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade modal-xl" id="ItemModal" tabindex="-1" role="dialog" aria-labelledby="itemModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="WorkOrderModalLabel">Select Items</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <table id="gridItemList"></table>
+                            <div id="pagerItemList"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnModalAddItems" type="button" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <link href="~/Contents/jquery.jqGrid/jquery-ui.min.css" rel="stylesheet" />
+        <link href="~/Contents/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" />
+        <link href="~/Contents/jquery.jqGrid/ace.min.css" rel="stylesheet" />
+        <link href="~/Contents/jquery.jqGrid/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/Contents/plugins/toastr/toastr.min.css">
+        <script src="~/Contents/Scripts/JQGrid/jquery-1.11.0.min.js"></script>
+        <script src="~/Contents/Scripts/JQGrid/jquery-ui-1.10.4.custom.min.js"></script>
+        <script src="~/Contents/Scripts/JQGrid/jquery.jqGrid.min.js"></script>
+        <script src="~/Contents/Scripts/JQGrid/grid.locale-en.js"></script>
+        <script src="~/Contents/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="~/Contents/plugins/sweetalert2/sweetalert2.min.js"></script>
+        <script src="~/Contents/plugins/toastr/toastr.min.js"></script>
+        <script src="~/Contents/Scripts/controller/order.js?@ViewBag.SessionID"></script>
+    </div>
+</section>
+

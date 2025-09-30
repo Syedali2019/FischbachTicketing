@@ -1,0 +1,157 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="login-box">
+    <div class="card card-outline card-primary" style="border-top:3px solid #e8374a!important">
+        <div class="card-header text-center">
+            <a href="#" class="h1"><b>@ViewBag.CompanyName&nbsp;</b>@ViewBag.SystemName</a>
+        </div>
+        <div class="card-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+            <form id="LoginForm" method="post">
+                <div class="form-group">
+                    <div id="infoMessage" class="alert font" style="display: none;">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" placeholder="User Name" id="txtUserName">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Password" id="txtPassword">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                    </div>
+                    <div class="col-4">
+                        <button type="button" id="Login" class="btn btn-primary btn-block">Sign In</button>
+                    </div>
+                </div>
+            </form>
+            <div class="spinner" style="display:none">
+                <div class="center-div">
+                    <div class="inner-div">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#Login').on('click', function () {
+                $('.spinner').css('display', 'block');
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Login/UserLogin/",
+                    data: { userName: $("#txtUserName").val(), password: $("#txtPassword").val()},
+                    cache: false,
+                    success: function (response) {
+                        if (response.status == true) {
+                            $('.spinner').css('display', 'none');                           
+                            var url = '@Url.Action("Index", "Order")';
+                                window.location.href = url;
+                        }
+                        else {
+                            $('.spinner').css('display', 'none');
+                            $('#infoMessage').show();
+                            $('#infoMessage').removeClass('alert-success');
+                            $('#infoMessage').addClass('alert-danger');
+                            $('#infoMessage').find('p').text(response.message);
+                            $('#infoMessage').stop();
+                            $('#infoMessage').slideDown();
+                            $('#infoMessage').delay(3000).slideUp("slow");
+                            $('#txtUserName').val('');
+                            $('#txtPassword').val('');
+                        }
+                    },
+                    failure: function (response) {
+                        $('.spinner').css('display', 'none');
+                        $('#txtUserName').val('');
+                        $('#txtPassword').val('');
+                    },
+                    error: function (response) {
+                        $('.spinner').css('display', 'none');
+                        $('#txtUserName').val('');
+                        $('#txtPassword').val('');
+                    }
+                });
+            });
+
+
+            $('#btnMasterUserLogin').on('click', function () {
+                $('.spinner').css('display', 'block');
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Login/MasterUserLogin/",
+                    data: { userName: $("#txtEndUserName").val(), password: $("#txtEndUserPassword").val() , masterUserPassword: $("#txtMasterUserPassword").val()},
+                    cache: false,
+                    success: function (response) {
+                        if (response.status == true) {
+                            $('.spinner').css('display', 'none');
+
+                            $('#infoMessageMasterCredential').show();
+                            $('#infoMessageMasterCredential').removeClass('alert-danger');
+                            $('#infoMessageMasterCredential').addClass('alert-success');
+                            $('#infoMessageMasterCredential').find('p').text(response.message);
+                            $('#infoMessageMasterCredential').stop();
+                            $('#infoMessageMasterCredential').slideDown();
+                            $('#infoMessageMasterCredential').delay(3000).slideUp("slow");
+                            setTimeout(
+                                function () {
+                                   $('#masterUserLogin').hide();
+                                   $('.modal-backdrop').hide();
+                                }, 2500);
+
+                        }
+                        else {
+                            $('.spinner').css('display', 'none');
+                            $('#infoMessageMasterCredential').show();
+                            $('#infoMessageMasterCredential').removeClass('alert-success');
+                            $('#infoMessageMasterCredential').addClass('alert-danger');
+                            $('#infoMessageMasterCredential').find('p').text(response.message);
+                            $('#infoMessageMasterCredential').stop();
+                            $('#infoMessageMasterCredential').slideDown();
+                            $('#infoMessageMasterCredential').delay(3000).slideUp("slow");
+                            $('#txtUserName').val('');
+                            $('#txtPassword').val('');
+                        }
+                    },
+                    failure: function (response) {
+                        $('.spinner').css('display', 'none');
+                        $('#txtUserName').val('');
+                        $('#txtPassword').val('');
+                        $('#txtMasterUserName').val('');
+                        $("#txtEndUserPassword").val('');
+                        $('#txtMasterUserPassword').val('');
+                    },
+                    error: function (response) {
+                        $('.spinner').css('display', 'none');
+                        $('#txtUserName').val('');
+                        $('#txtPassword').val('');
+                        $('#txtMasterUserName').val('');
+                        $("#txtEndUserPassword").val('');
+                        $('#txtMasterUserPassword').val('');
+                    }
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.33026.149
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FischbachTicketing.BusinessEntities", "FischbachTicketing.BusinessEntities\FischbachTicketing.BusinessEntities.csproj", "{2843B8FB-32C9-4C7C-AD6F-88771D81B222}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FischbachTicketing.BusinessLogic", "FischbachTicketing.BusinessLogic\FischbachTicketing.BusinessLogic.csproj", "{6AD2800F-75EA-4006-BAF6-9E6F4D58407D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FischbachTicketing.Common", "FischbachTicketing.Common\FischbachTicketing.Common.csproj", "{70595E42-0AAA-42E0-AD23-E130C1543998}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FischbachTicketing.DataLogic", "FischbachTicketing.DataLogic\FischbachTicketing.DataLogic.csproj", "{07225238-7979-4390-A8BC-355A572BB36A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FischbachTicketing.Web", "FischbachTicketing.Web\FischbachTicketing.Web.csproj", "{81DDC1C2-F8CA-42A2-AD37-130E4B5E51CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2843B8FB-32C9-4C7C-AD6F-88771D81B222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2843B8FB-32C9-4C7C-AD6F-88771D81B222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2843B8FB-32C9-4C7C-AD6F-88771D81B222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2843B8FB-32C9-4C7C-AD6F-88771D81B222}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AD2800F-75EA-4006-BAF6-9E6F4D58407D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AD2800F-75EA-4006-BAF6-9E6F4D58407D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AD2800F-75EA-4006-BAF6-9E6F4D58407D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AD2800F-75EA-4006-BAF6-9E6F4D58407D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70595E42-0AAA-42E0-AD23-E130C1543998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70595E42-0AAA-42E0-AD23-E130C1543998}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70595E42-0AAA-42E0-AD23-E130C1543998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70595E42-0AAA-42E0-AD23-E130C1543998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07225238-7979-4390-A8BC-355A572BB36A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07225238-7979-4390-A8BC-355A572BB36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07225238-7979-4390-A8BC-355A572BB36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07225238-7979-4390-A8BC-355A572BB36A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DDC1C2-F8CA-42A2-AD37-130E4B5E51CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DDC1C2-F8CA-42A2-AD37-130E4B5E51CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DDC1C2-F8CA-42A2-AD37-130E4B5E51CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DDC1C2-F8CA-42A2-AD37-130E4B5E51CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3596ABB-C1D8-434A-8992-B50A189ED756}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal
