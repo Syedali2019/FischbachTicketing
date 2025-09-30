@@ -44,7 +44,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D3596ABB-C1D8-434A-8992-B50A189ED756}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+		SolutionGuid = {D3596ABB-C1D8-434A-8992-B50A189ED756}
 	EndGlobalSection
 EndGlobal
